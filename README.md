@@ -10,10 +10,8 @@
 
 ## 🚀 Overview
 
-Oracle is a real-time AI voice assistant built using **LiveKit
-Agents**, **Google Gemini Realtime**, and **Mem0 long-term memory**.\
-It supports live voice conversations, tool execution (weather, time,
-email, web search), and persistent memory across sessions.
+Oracle is a real-time AI voice assistant built using **LiveKit Agents**, **Google Gemini Realtime**, and **Mem0 long-term memory**. It supports live voice conversations, tool execution such as weather updates, time queries, email drafting, and web search, along with persistent memory across sessions for contextual continuity. The system leverages low-latency streaming communication and a modular agent architecture to enable intelligent multi-turn interactions, integrating a Python backend with an Android client for a seamless AI-powered voice experience.
+
 
 ------------------------------------------------------------------------
 
