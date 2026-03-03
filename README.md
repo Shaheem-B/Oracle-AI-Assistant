@@ -1,10 +1,11 @@
 # 🤖 Oracle AI --- Real-Time AI Voice Assistant
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue)
-![LiveKit](https://img.shields.io/badge/LiveKit-Realtime-orange)
-![Gemini](https://img.shields.io/badge/Gemini-LLM-green)
-![Android](https://img.shields.io/badge/Android-Mobile-brightgreen)
-![Status](https://img.shields.io/badge/Status-Production_Ready-success)
+![Kotlin](https://img.shields.io/badge/Kotlin-Mobile_Client-purple)
+![LiveKit Agents](https://img.shields.io/badge/LiveKit-Agents-orange)
+![LiveKit Cloud](https://img.shields.io/badge/LiveKit-Cloud_Deployment-blue)
+![Gemini Realtime](https://img.shields.io/badge/Gemini-Realtime_LLM-green)
+![Mem0](https://img.shields.io/badge/Mem0-Long_Term_Memory-teal)
 
 ------------------------------------------------------------------------
 
@@ -185,6 +186,30 @@ Oracle dynamically calls tools instead of hallucinating answers and below given 
         └── Android Studio project                  # Mobile app connecting to LiveKit Cloud
 
 ------------------------------------------------------------------------
+
+## 🚀 Getting Started
+
+### 📋 Prerequisites
+Before setting up Oracle, ensure the following are installed:
+
+#### 🧰 Required Software
+
+-   Python 3.10+
+-   Docker (required for LiveKit Cloud deployment)
+-   Git
+-   LiveKit CLI
+-   Android Studio (for mobile integration)
+
+#### 🔑 Required Accounts & API Keys
+You must have:
+
+-   LiveKit Cloud Project
+-   Google Gemini API Key
+-   Mem0 API Key
+-   Gmail App Password (for email tool)
+
+------------------------------------------------------------------------
+
 ## ⚙️ Environment Configuration
 ### Create a .env file:
 
@@ -201,7 +226,17 @@ Oracle dynamically calls tools instead of hallucinating answers and below given 
     USER_ID=your_name
     DEFAULT_CITY=your_location
 
-## 🖥️ Local Development Setup
+------------------------------------------------------------------------
+
+## 🖥️ Deployment Modes
+Oracle supports two operational modes:
+1. Local Deployment
+2. LiveKit Cloud Deployment
+
+------------------------------------------------------------------------
+
+## 🔹 Mode 1 — Local Development (PC/Laptop Required)
+Use this when developing or testing with Android Studio.
 
 ### 1️⃣ Clone Repository
 
@@ -224,6 +259,49 @@ Oracle dynamically calls tools instead of hallucinating answers and below given 
 ### 5️⃣ Running the Agent
 
     python agent.py dev
+
+#### Now:
+
+-   Run Android app from Android Studio
+-   Ensure phone + laptop are on same network
+-   Oracle runs through your local machine
+
+------------------------------------------------------------------------
+
+## 🔹 Mode 2 — LiveKit Cloud Deployment (Production / Global Access)
+This allows Oracle to run 24/7 in the cloud, without the need of PC/laptop.
+
+### ✅ Prerequisites
+
+-   LiveKit Cloud account
+-   Docker installed
+-   LiveKit CLI installed (lk)
+-   .env file ready (used as secrets)
+
+### 1️⃣ Authenticate LiveKit CLI
+
+    lk cloud auth
+Complete browser verification.
+
+### 2️⃣ Fix requirements (important)
+
+Ensure requirements.txt contains:
+
+    livekit-plugins-noise-cancellation==0.2.5
+
+### 3️⃣ Deploy Agent to LiveKit Cloud
+
+From project root:
+
+    lk agent create    
+
+### 📱 Using Android App with Cloud Agent
+
+Once deployed:
+
+-   Update Android app to use your LiveKit Cloud URL
+-   No need to run python agent.py dev
+-   Oracle works from anywhere (WiFi / mobile data)
 
 ------------------------------------------------------------------------
 
@@ -252,29 +330,6 @@ Implement secure backend token generation instead of hardcoded JWT tokens.
 
 ------------------------------------------------------------------------
 
-## 🌍 Deployment (24/7 Operation)
-To run without a laptop:
-### Option 1: Railway (Recommended)
-
--   Push to GitHub
--   Connect Railway
--   Add environment variables
--   Deploy Python service
-
-### Option 2: Render
-
--   Create Web Service
--   Add environment variables
--   Start command:
-        
-        python agent.py
-
-### Option 3: Fly.io
-
--   Deploy Docker container
--   Global low-latency
-
-------------------------------------------------------------------------
 ## 📊 System Design Considerations
 ### Why Tool-Augmented LLM?
 
